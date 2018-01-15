@@ -1,11 +1,18 @@
 <?php
 include "lib/lib.php";
+include "model/diaMassagem.php";
 
-$result = $mySQL->executeSQL("SELECT * FROM `diamassagem` WHERE 1=1 AND BoolAtivo = 1 order by 1 DESC");
+$diaMassagem = new diaMassagem();
+$result =  $diaMassagem->getDiaMassagemAtivo($mySQL);
 
 while($rowDia = mysqli_fetch_array( $result, MYSQLI_NUM)){
-  printf ("ID: %d | Dia: %s | Ativo: %b %s", $rowDia[0], $rowDia[1], $rowDia[2],"<br>");
+  print_r($rowDia);
+   // printf ("ID: %d | Dia: %s | Ativo: %b %s", $rowDia[0], $rowDia[1], $rowDia[2],"<br>");
 }
+include "./view/html/header.html";
+include "./view/html/body.html";
+include "./view/html/footer.html";
+
 
 
 /*
