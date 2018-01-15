@@ -1,11 +1,12 @@
 <?php
 include "lib/lib.php";
 
-$result = executeSQL("SELECT * FROM `diamassagem` WHERE 1=1 order by 1 DESC");
-print_r($result);
-foreach(mysqli_fetch_array($result) as $line){
-  print_r($line + "<Br>\n");
+$result = $mySQL->executeSQL("SELECT * FROM `diamassagem` WHERE 1=1 AND BoolAtivo = 1 order by 1 DESC");
+
+while($rowDia = mysqli_fetch_array( $result, MYSQLI_NUM)){
+  printf ("ID: %d | Dia: %s | Ativo: %b %s", $rowDia[0], $rowDia[1], $rowDia[2],"<br>");
 }
+
 
 /*
 //QUERYs

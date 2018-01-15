@@ -1,7 +1,7 @@
 <?php
 include "DBLib.php";
 
-//$mySQL
+$mySQL = new DBLib;
 
 function sysout($string){
 	echo $string + "<br>";
