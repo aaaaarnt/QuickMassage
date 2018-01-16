@@ -1,14 +1,25 @@
 <?php
 include "lib/lib.php";
 include "model/diaMassagem.php";
+include "model/cadeiraMassagem.php";
 
 $diaMassagem = new diaMassagem();
-$result =  $diaMassagem->getDiaMassagemAtivo($mySQL);
+$diaMassagem->getDiaMassagemAtivo($mySQL);
+// print_r($diaMassagem);
 
-while($rowDia = mysqli_fetch_array( $result, MYSQLI_NUM)){
-  print_r($rowDia);
-   // printf ("ID: %d | Dia: %s | Ativo: %b %s", $rowDia[0], $rowDia[1], $rowDia[2],"<br>");
+$cadeiraMassagem = new cadeiraMassagem();
+// echo $diaMassagem->idMassagem + "<br>";
+$listIdCadeiras = $cadeiraMassagem->getIdCadeirasFromDia($diaMassagem->idMassagem, $mySQL);
+
+// print_r($listIdCadeiras);
+foreach($listIdCadeiras as $idCadeira){
+  $cadeira = new CadeiraMassagem();
+  $cadeira->getCadeiraFromId($idCadeira, $mySQL);
+  $diaMassagem->cadeiras[] = $cadeira;
 }
+
+print_r($diaMassagem->cadeiras);
+
 include "./view/html/header.html";
 include "./view/html/body.html";
 include "./view/html/footer.html";
@@ -18,7 +29,6 @@ include "./view/html/footer.html";
 /*
 //QUERYs
 
-$queryDia = "SELECT * FROM `diamassagem` WHERE 1=1 order by 1 DESC";
 $queryCadeira = "SELECT * FROM `cadeiramassagem`WHERE 1=1 order by 1 DESC";
 $queryHorario = "SELECT * FROM `horariomassagem`WHERE 1=1 order by 1 DESC";
 $queryUsers = "SELECT * FROM `listausuariosadb` WHERE 1=1 order by 1 DESC";
