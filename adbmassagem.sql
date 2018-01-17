@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 12, 2018 at 06:05 PM
+-- Generation Time: Jan 17, 2018 at 11:54 AM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -34,7 +34,15 @@ CREATE TABLE IF NOT EXISTS `cadeiramassagem` (
   `IDDia` int(11) NOT NULL,
   `Cadeira` varchar(30) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `cadeiramassagem`
+--
+
+INSERT INTO `cadeiramassagem` (`ID`, `IDDia`, `Cadeira`) VALUES
+(1, 1, 'Carlos'),
+(2, 1, 'Rosane');
 
 -- --------------------------------------------------------
 
@@ -69,24 +77,18 @@ CREATE TABLE IF NOT EXISTS `horariomassagem` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `IDCadeira` int(11) NOT NULL,
   `horario` varchar(5) COLLATE utf8_bin NOT NULL,
-  `blOcupado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `inscricao`
---
-
-DROP TABLE IF EXISTS `inscricao`;
-CREATE TABLE IF NOT EXISTS `inscricao` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `idHorario` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
-  `dtReferencia` datetime NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `horariomassagem`
+--
+
+INSERT INTO `horariomassagem` (`ID`, `IDCadeira`, `horario`, `idUsuario`) VALUES
+(1, 1, '10:30', 0),
+(2, 1, '11:30', 0),
+(3, 2, '09:30', 0);
 
 -- --------------------------------------------------------
 
@@ -101,7 +103,15 @@ CREATE TABLE IF NOT EXISTS `listausuariosadb` (
   `email` varchar(300) COLLATE utf8_bin NOT NULL,
   `senha` int(6) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `listausuariosadb`
+--
+
+INSERT INTO `listausuariosadb` (`ID`, `nome`, `email`, `senha`) VALUES
+(1, 'Diego Grandi', 'diego.grandi@dllgroup.com', 12345),
+(2, 'Victor Arnt', 'victor.arnt@dllgroup.com', 12345);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

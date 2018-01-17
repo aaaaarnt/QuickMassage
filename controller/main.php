@@ -3,6 +3,7 @@ include "lib/lib.php";
 include "model/DiaMassagem.php";
 include "model/CadeiraMassagem.php";
 include "model/HorarioMassagem.php";
+include "model/Usuario.php";
 
 $diaMassagem = new DiaMassagem();
 $diaMassagem->getDiaMassagemAtivo($mySQL);
@@ -16,12 +17,6 @@ include "./view/html/footer.html";
 
 /*
 //QUERYs
-
-$queryHorario = "SELECT * FROM `horariomassagem`WHERE 1=1 order by 1 DESC";
-$queryUsers = "SELECT * FROM `listausuariosadb` WHERE 1=1 order by 1 DESC";
-$queryInscricao = "SELECT * FROM `inscricao` WHERE 1=1 order by 1 DESC";
-
-
 
 
 

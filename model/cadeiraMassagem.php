@@ -21,10 +21,8 @@ class CadeiraMassagem{
 		$result = $mySQL->executeSQL("SELECT * FROM `cadeiramassagem` WHERE 1=1 AND `idDia`= ".$idDia." order by 1 DESC");
 			$listIdCadeiras = "";
 		while($rowCadeira = mysqli_fetch_array($result, MYSQLI_NUM)){
- 			 // printf ("ID: %d | idDia: %d | Cadeira: %b<br>", $rowCadeira[0], $rowCadeira[1], $rowCadeira[2]);
  			 $listIdCadeiras[] = $rowCadeira[0];
 		}
-		// print_r($listIdCadeiras);
 		return $listIdCadeiras;
 	}
 

@@ -2,7 +2,8 @@
 class HorarioMassagem{
 	private $idHorario = "";
 	private $idCadeira = "";
-	private $Horario   = "";
+	private $horario   = "";
+	private $usuario   = "";
 
 	public function getIdHorario(){return $this->idHorario;}
 	public function setIdHorario($idHorario){ $this->idHorario = $idHorario;}
@@ -12,6 +13,9 @@ class HorarioMassagem{
 
 	public function getHorario(){return $this->horario;}
 	public function setHorario($horario){ $this->horario = $horario;}
+
+	public function getUsuario(){return $this->usuario;}
+	public function setUsuario($usuario){$this->usuario = $usuario;}
 
 	public static function getIdFromHorarios($idCadeira, $mySQL){
 		$result = $mySQL->executeSQL("SELECT * FROM `horariomassagem` WHERE 1=1 AND `idCadeira`= ".$idCadeira." order by 1 DESC");
@@ -28,6 +32,9 @@ class HorarioMassagem{
 		$this->setIdHorario($row[0]);
 		$this->setIdCadeira($row[1]);
 		$this->setHorario($row[2]);
+		$user = $row[3];
+		$usuario = new Usuario();
+		$this->setUsuario($usuario->getUserFromId($user, $mySQL));
 		return $this;
 	}
 
