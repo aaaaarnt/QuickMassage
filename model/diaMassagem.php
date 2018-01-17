@@ -1,5 +1,5 @@
 <?php 
-	class diaMassagem{
+	class DiaMassagem{
 	
 	public $diaMassagem = "";
 	public $idMassagem  = "";
@@ -25,8 +25,12 @@
 		$this->setIdMassagem($rowDia[0]);
 		$this->setBlAtivo($rowDia[2]);
   		
+  		$cadeiras = new CadeiraMassagem();
+		$this->cadeiras = $cadeiras->populateCadeiras($this->idMassagem, $mySQL);
 		return $this;
 	}
+
+
 	
 }
 

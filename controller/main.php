@@ -1,24 +1,12 @@
 <?php
 include "lib/lib.php";
-include "model/diaMassagem.php";
-include "model/cadeiraMassagem.php";
+include "model/DiaMassagem.php";
+include "model/CadeiraMassagem.php";
+include "model/HorarioMassagem.php";
 
-$diaMassagem = new diaMassagem();
+$diaMassagem = new DiaMassagem();
 $diaMassagem->getDiaMassagemAtivo($mySQL);
 // print_r($diaMassagem);
-
-$cadeiraMassagem = new cadeiraMassagem();
-// echo $diaMassagem->idMassagem + "<br>";
-$listIdCadeiras = $cadeiraMassagem->getIdCadeirasFromDia($diaMassagem->idMassagem, $mySQL);
-
-// print_r($listIdCadeiras);
-foreach($listIdCadeiras as $idCadeira){
-  $cadeira = new CadeiraMassagem();
-  $cadeira->getCadeiraFromId($idCadeira, $mySQL);
-  $diaMassagem->cadeiras[] = $cadeira;
-}
-
-print_r($diaMassagem->cadeiras);
 
 include "./view/html/header.html";
 include "./view/html/body.html";
@@ -29,7 +17,6 @@ include "./view/html/footer.html";
 /*
 //QUERYs
 
-$queryCadeira = "SELECT * FROM `cadeiramassagem`WHERE 1=1 order by 1 DESC";
 $queryHorario = "SELECT * FROM `horariomassagem`WHERE 1=1 order by 1 DESC";
 $queryUsers = "SELECT * FROM `listausuariosadb` WHERE 1=1 order by 1 DESC";
 $queryInscricao = "SELECT * FROM `inscricao` WHERE 1=1 order by 1 DESC";
