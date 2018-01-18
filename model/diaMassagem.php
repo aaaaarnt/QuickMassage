@@ -6,7 +6,7 @@ class DiaMassagem{
 	private $blAtivo     = ""; // Bool
 	private $cadeiras    = ""; // eh array de objetos Cadeira
 
-	public function getDiaMassagem (){ return $this->diaMassagem; } //  
+	public function getDiaMassagem (){ return $this->diaMassagem; } 
 	public function setDiaMassagem($dia){ $this->diaMassagem = $dia; }
 
 	public function getIdMassagem(){ return $this->idMassagem; }
