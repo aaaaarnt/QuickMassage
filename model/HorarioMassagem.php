@@ -1,5 +1,6 @@
 <?php
 class HorarioMassagem{
+	
 	private $idHorario = "";
 	private $idCadeira = "";
 	private $horario   = "";
@@ -35,7 +36,7 @@ class HorarioMassagem{
 		$user = $row[3];
 		$usuario = new Usuario();
 		$this->setUsuario($usuario->getUserFromId($user, $mySQL));
-		return $this;
+		return $this; 
 	}
 
 	public function populateHorarios($idCadeira, $mySQL){

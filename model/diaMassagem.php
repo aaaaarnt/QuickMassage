@@ -1,12 +1,12 @@
 <?php 
-	class DiaMassagem{
-	
-	public $diaMassagem = "";
-	public $idMassagem  = "";
-	public $blAtivo     = "";	
-	public $cadeiras    = "";
+class DiaMassagem{
 
-	public function getDiaMassagem (){ return $this->diaMassagem; }
+	private $idMassagem  = ""; //int autmotico
+	private $diaMassagem = ""; //datetime manual
+	private $blAtivo     = ""; // Bool
+	private $cadeiras    = ""; // eh array de objetos Cadeira
+
+	public function getDiaMassagem (){ return $this->diaMassagem; } //  
 	public function setDiaMassagem($dia){ $this->diaMassagem = $dia; }
 
 	public function getIdMassagem(){ return $this->idMassagem; }
@@ -21,8 +21,8 @@
 	public function getDiaMassagemAtivo($mySQL){
 		$result = $mySQL->executeSQL("SELECT * FROM `diamassagem` WHERE 1=1 AND `boolAtivo` = 1 order by 1 DESC");
 		$rowDia = mysqli_fetch_array( $result, MYSQLI_NUM);
-		$this->setDiaMassagem($rowDia[1]);
 		$this->setIdMassagem($rowDia[0]);
+		$this->setDiaMassagem($rowDia[1]);
 		$this->setBlAtivo($rowDia[2]);
   		
   		$cadeiras = new CadeiraMassagem();

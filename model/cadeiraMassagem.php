@@ -1,5 +1,6 @@
 <?php
 class CadeiraMassagem{
+	
 	private $idCadeira = "";
 	private $idDia     = "";
 	private $Cadeira   = "";
