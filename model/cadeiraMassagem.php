@@ -45,7 +45,7 @@ class CadeiraMassagem{
 		  $cadeira->getCadeiraFromId($idCadeira, $mySQL);
 		  $cadeiras[] = $cadeira;
 		}
-		print_r($cadeiras);
+		// print_r($cadeiras);
 		return $cadeiras;
 	}
 
