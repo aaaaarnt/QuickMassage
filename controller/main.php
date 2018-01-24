@@ -9,7 +9,7 @@ include "model/Usuario.php";
   $diaMassagem = new DiaMassagem();
   $diaMassagem->getDiaMassagemAtivo($mySQL);
 
-  print_r($diaMassagem);  // print_r imprime o Objeto inteiro
+  //print_r($diaMassagem);  // print_r imprime o Objeto inteiro
 
 include "./view/html/header.html";
 include "./view/html/body.html";
